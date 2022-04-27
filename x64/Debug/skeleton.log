@@ -1,0 +1,20 @@
+﻿  office.cpp
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutInitWindowSize в функции main.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutInitDisplayMode в функции main.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutMainLoop в функции main.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutPostRedisplay в функции "void __cdecl passiveMouseMotionCallback(int,int)" (?passiveMouseMotionCallback@@YAXHH@Z).
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutSwapBuffers в функции "void __cdecl displayCallback(void)" (?displayCallback@@YAXXZ).
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutTimerFunc в функции "void __cdecl timerCallback(int)" (?timerCallback@@YAXH@Z).
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutReshapeFunc в функции main.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutDisplayFunc в функции main.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp___glutInitWithExit в функции glutInit_ATEXIT_HACK.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp___glutCreateWindowWithExit в функции glutCreateWindow_ATEXIT_HACK.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutCloseFunc в функции main.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutInitContextVersion в функции main.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glutInitContextFlags в функции main.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ "bool __cdecl pgr::initialize(int,int,enum pgr::DebugLevel)" (?initialize@pgr@@YA_NHHW4DebugLevel@1@@Z) в функции main.
+office.obj : error LNK2019: ссылка на неразрешенный внешний символ "void __cdecl pgr::dieWithError(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?dieWithError@pgr@@YAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) в функции main.
+office.obj : error LNK2001: неразрешенный внешний символ _ptrc_glClear.
+C:\Users\Shenri\Desktop\PGR\pgr-framework\lib\pgrd.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\Users\Shenri\Desktop\PGR\pgr-framework\lib\freeglut.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\Users\Shenri\Desktop\Office\x64\Debug\office.exe : fatal error LNK1120: неразрешенных внешних элементов: 16
