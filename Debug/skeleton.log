@@ -1,0 +1,15 @@
+﻿  camera.cpp
+C:\Users\Shenri\Desktop\Office\camera.h(3,10): fatal error C1083: Не удается открыть файл включение: pgr.h: No such file or directory,
+  controls.cpp
+C:\Users\Shenri\Desktop\Office\controls.h(4,10): fatal error C1083: Не удается открыть файл включение: pgr.h: No such file or directory,
+  object.cpp
+C:\Users\Shenri\Desktop\Office\object.h(5,10): fatal error C1083: Не удается открыть файл включение: pgr.h: No such file or directory,
+  office.cpp
+C:\Users\Shenri\Desktop\Office\office.cpp(10,10): fatal error C1083: Не удается открыть файл включение: pgr.h: No such file or directory,
+  render.cpp
+C:\Users\Shenri\Desktop\Office\render.h(3,10): fatal error C1083: Не удается открыть файл включение: pgr.h: No such file or directory,
+  scene.cpp
+C:\Users\Shenri\Desktop\Office\scene.h(3,10): fatal error C1083: Не удается открыть файл включение: pgr.h: No such file or directory,
+  window.cpp
+C:\Users\Shenri\Desktop\Office\window.h(4,10): fatal error C1083: Не удается открыть файл включение: pgr.h: No such file or directory,
+  Создание кода...
