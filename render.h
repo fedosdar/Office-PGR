@@ -34,6 +34,8 @@ struct RegularShader {
 	// Special information locations
 	GLint dayLocation;
 	GLint reflectorLocation;
+	GLint transparentLocation;
+	GLint pointLightLocation;
 };
 
 struct SkyboxShader {
@@ -49,7 +51,7 @@ struct SkyboxShader {
 };
 
 void setTransformUniforms(const glm::mat4& modelMatrix, const glm::mat4& viewMatrix, const glm::mat4& projectionMatrix);
-void setMaterialUniforms(const glm::vec3& ambient, const glm::vec3& diffuse, const glm::vec3& specular, float glossiness, GLuint texture, bool multi);
+void setMaterialUniforms(const glm::vec3& ambient, const glm::vec3& diffuse, const glm::vec3& specular, float glossiness, GLuint texture, bool multi, bool transparent);
 
 void initSkyboxShader();
 void initRegularShader();

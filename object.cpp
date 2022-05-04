@@ -1,9 +1,11 @@
 #include <iostream>
 #include "object.h"
 #include "render.h"
+#include "controls.h"
 
 extern struct RegularShader		regularShader;
 extern struct SkyboxShader		skyboxShader;
+extern struct GameState			gameState;
 
 // delete object geometry
 void Object::cleanupGeometry() {
@@ -245,6 +247,41 @@ bool StaticObject::initGeometry() {
 	return true;
 }
 
+bool StaticObject::initHardcodedGeometry()
+{
+	geometry = new Geometry;
+	glGenVertexArrays(1, &(geometry->vertexArrayObject));
+	glBindVertexArray(geometry->vertexArrayObject);
+
+	glGenBuffers(1, &(geometry->vertexBufferObject));
+	glBindBuffer(GL_ARRAY_BUFFER, geometry->vertexBufferObject);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(redpepperVertices), redpepperVertices, GL_STATIC_DRAW);
+
+	glEnableVertexAttribArray(regularShader.posLocation);
+	glVertexAttribPointer(regularShader.posLocation, 3, GL_FLOAT, GL_FALSE, redpepperNAttribsPerVertex * sizeof(float), 0);
+
+	glEnableVertexAttribArray(regularShader.normalLocation);
+	glVertexAttribPointer(regularShader.normalLocation, 3, GL_FLOAT, GL_FALSE, redpepperNAttribsPerVertex * sizeof(float), (void*)(3 * sizeof(float)));
+
+	glGenBuffers(1, &(geometry->elementBufferObject));
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, geometry->elementBufferObject);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(redpepperTriangles), redpepperTriangles, GL_STATIC_DRAW);
+
+	glBindVertexArray(0);
+
+	geometry->ambient = glm::vec3(0.0f, 0.0f, 0.0f);
+	geometry->diffuse = glm::vec3(0.5f, 0.0f, 0.0f);
+	geometry->specular = glm::vec3(0.7f, 0.6253f, 0.6f);
+	geometry->glossiness = 0.25f;
+	geometry->texture = 0;
+
+	glBindVertexArray(0);
+
+	geometry->numTriangles = redpepperNTriangles;
+
+	return true;
+}
+
 void StaticObject::draw(const glm::mat4& viewMatrix, const glm::mat4& projectionMatrix) {
 	glStencilFunc(GL_ALWAYS, id, -1);
 
@@ -252,7 +289,6 @@ void StaticObject::draw(const glm::mat4& viewMatrix, const glm::mat4& projection
 
 	glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), position);
 	modelMatrix = glm::mat4(1.0f) * modelMatrix;
-	setTransformUniforms(modelMatrix, viewMatrix, projectionMatrix);
 	modelMatrix = glm::rotate(modelMatrix, direction, glm::vec3(0, 1, 0));
 	modelMatrix = glm::scale(modelMatrix, glm::vec3(size * 1.5));
 
@@ -264,7 +300,8 @@ void StaticObject::draw(const glm::mat4& viewMatrix, const glm::mat4& projection
 		geometry->specular,
 		geometry->glossiness,
 		geometry->texture,
-		multi
+		multi,
+		transparent
 	);
 
 	glBindVertexArray(geometry->vertexArrayObject);

@@ -25,7 +25,7 @@ void setTransformUniforms(const glm::mat4& modelMatrix, const glm::mat4& viewMat
 	glUniformMatrix4fv(regularShader.normalMatrixLocation, 1, GL_FALSE, glm::value_ptr(normalMatrix));
 }
 
-void setMaterialUniforms(const glm::vec3& ambient, const glm::vec3& diffuse, const glm::vec3& specular, float glossiness, GLuint texture, bool multi){
+void setMaterialUniforms(const glm::vec3& ambient, const glm::vec3& diffuse, const glm::vec3& specular, float glossiness, GLuint texture, bool multi, bool transparent){
 	// Material information
 	glUniform3fv(regularShader.diffuseLocation, 1, glm::value_ptr(diffuse));
 	glUniform3fv(regularShader.ambientLocation, 1, glm::value_ptr(ambient));
@@ -51,17 +51,29 @@ void setMaterialUniforms(const glm::vec3& ambient, const glm::vec3& diffuse, con
 		glUniform1i(regularShader.textureLocation, 0);
 	}
 
+	// Transparent object
+	if (transparent)
+		glUniform1i(regularShader.transparentLocation, 1);
+	else
+		glUniform1i(regularShader.transparentLocation, 0);
+
 	// Daytime toggle
 	if (gameState.day)
 		glUniform1i(regularShader.dayLocation, 1);
 	else
 		glUniform1i(regularShader.dayLocation, 0);
 
-
+	// Flashlight toggle
 	if (gameState.reflector)
 		glUniform1i(regularShader.reflectorLocation, 1);
 	else
 		glUniform1i(regularShader.reflectorLocation, 0);
+
+	// Monitor light toggle
+	if (gameState.pointLight)
+		glUniform1i(regularShader.pointLightLocation, 1);
+	else
+		glUniform1i(regularShader.pointLightLocation, 0);
 }
 
 void initSkyboxShader() {
@@ -116,6 +128,8 @@ void initRegularShader() {
 	// Special information locations
 	regularShader.dayLocation = glGetUniformLocation(regularShader.program, "day");
 	regularShader.reflectorLocation = glGetUniformLocation(regularShader.program, "reflector");
+	regularShader.transparentLocation = glGetUniformLocation(regularShader.program, "transparent");
+	regularShader.pointLightLocation = glGetUniformLocation(regularShader.program, "pointLight");
 }	
 
 void initShaderPrograms(){

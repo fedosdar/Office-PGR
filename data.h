@@ -5,7 +5,7 @@
 #define WINDOW_TITLE   "Office"
 
 // Camera settings
-#define CAMERA_SPEED 2.0f						
+#define CAMERA_SPEED 0.1f						
 #define CAMERA_SENSITIVITY 0.1f	
 #define PLAYER_RADIUS 0.2f
 
@@ -20,4 +20,4 @@
 #define PRINTER "data/printer/printer.obj"
 #define TABLE "data/table/table1.obj"
 #define TISSUEBOX "data/tissueBox/TissueBox.obj"
-//#define WINDOW "data/window/window.obj"
+#define WINDOW "data/window/window.obj"
