@@ -1,7 +1,7 @@
 #pragma once
 
 #include "data.h"
-#include "pgr.h"
+#include "pgr.h";
 
 // Key map
 enum {
@@ -20,11 +20,11 @@ struct GameState {
 	bool keyMap[KEY_COUNT];
 	
 	float currentTime;
-	float elapsedTime;
+	//float elapsedTime;
 
 	bool day;
 	bool reflector;
-
+	bool pointLight;
 };
 
 void passiveMouseMotionCallback(int mouseX, int mouseY);

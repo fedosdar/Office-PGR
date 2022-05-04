@@ -26,11 +26,12 @@ void activeMouseCallback(int button, int state, int mouseX, int mouseY) {
 
 		std::cout << "ID " << (int)idClicked << std::endl;
 
-		if (idClicked == 0)
+		if (idClicked == 2)
 			gameState.day = !gameState.day;
-		else if (idClicked == 5)
+		if (idClicked == 5)
 			gameState.reflector = !gameState.reflector;
-
+		if (idClicked == 6)
+			gameState.pointLight = !gameState.pointLight;
 	}
 }
 
@@ -99,8 +100,8 @@ void specialKeyboardCallback(int specKeyPressed, int mouseX, int mouseY) {
 
 void timerCallback(int) {
 	// Updating game time (converted to seconds)
-	gameState.currentTime = 0.001f * (float)glutGet(GLUT_ELAPSED_TIME) - gameState.currentTime;
-	gameState.elapsedTime = 0.001f * (float)glutGet(GLUT_ELAPSED_TIME);
+	gameState.currentTime = 0.001f * (float)glutGet(GLUT_ELAPSED_TIME);
+	//gameState.elapsedTime = 0.001f * (float)glutGet(GLUT_ELAPSED_TIME);
 
 	glutTimerFunc(33, timerCallback, 0);
 

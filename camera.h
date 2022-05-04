@@ -10,7 +10,7 @@ public:
 
 	glm::vec3 position;			// Camera position
 	glm::vec3 direction;		
-	glm::vec3 up;				
+	glm::vec3 front;				
 	glm::vec3 right;			
 	glm::vec3 worldUp;			// World up-vector
 
@@ -24,7 +24,7 @@ public:
 
 	Camera();
 
-	bool objectCollision(const glm::vec3 &position1, float r);
+	bool objectCollision(const glm::vec3& cameraPos, const glm::vec3& objectPos, float r);
 
 	void setView1();
 	void setView2();

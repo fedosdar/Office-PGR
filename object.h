@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "pgr.h"
+#include "data/papper/redpepper.h"
 
 struct Geometry {
 
@@ -29,6 +30,7 @@ public:
 	Object() {};
 	virtual bool	initGeometry() = 0;
 	void			cleanupGeometry();
+	virtual void draw(const glm::mat4& viewMatrix, const glm::mat4& projectionMatrix) = 0;
 
 };
 
@@ -51,6 +53,7 @@ public:
 	float direction;		// In radians
 
 	bool multi = false;
+	bool transparent = false;
 
 	StaticObject(unsigned char id, std::string filePath, glm::vec3 position, float size, float direction) :
 		id(id),
@@ -59,17 +62,18 @@ public:
 		size(size),
 		direction(direction) {};
 
-	StaticObject(unsigned char id, std::string filePath, glm::vec3 position, float size, float direction, bool multi) :
+	StaticObject(unsigned char id, std::string filePath, glm::vec3 position, float size, float direction, bool multi, bool transparent) :
 		id(id),
 		filePath(filePath),
 		position(position),
 		size(size),
 		direction(direction),
-		multi(multi) {};
+		multi(multi),
+		transparent(transparent) {};
 
 
 	bool initGeometry();
+	bool initHardcodedGeometry();
 
 	void draw(const glm::mat4& viewMatrix, const glm::mat4& projectionMatrix);
-
 };
